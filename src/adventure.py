@@ -58,13 +58,13 @@ def adventure():
     user_input = input('$ ')
 
     if user_input == 'n':
-      main_player.current_room = room[main_player.current_room].n_to
+      main_player.move('n')
     elif user_input == 's':
-      main_player.current_room = room[main_player.current_room].s_to
+      main_player.move('s')
     elif user_input == 'w':
-      main_player.current_room = room[main_player.current_room].w_to
+      main_player.move('w')
     elif user_input == 'e':
-      main_player.current_room = room[main_player.current_room].e_to
+      main_player.move('e')
     elif user_input == 'q' or user_input == 'quit':
       print('\n*Death by exhaustion*\n')
       print('// GAME OVER\n')
