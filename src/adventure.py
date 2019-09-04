@@ -51,8 +51,7 @@ def adventure():
   main_player = Player('Joe', room['outside'])
 
   print('You wake up.\n')
-  # print(f"// {main_player.current_room.upper()}\n")
-  print(f"// {main_player.current_room}\n")
+  print(f"// {str(main_player.current_room).upper()}\n")
   print(textwrap.fill(main_player.current_room.description, 70), '\n')
 
   while True:
