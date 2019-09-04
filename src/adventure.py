@@ -48,17 +48,17 @@ room['treasure'].s_to = room['narrow']
 #
 
 def adventure():
-  main_player = Player('Joe', 'overlook')
+  main_player = Player('Joe', room['outside'])
 
   print('You wake up.\n')
-  print(f"// {main_player.current_room.upper()}\n")
-  print(textwrap.fill(room[main_player.current_room].description, 70), '\n')
+  # print(f"// {main_player.current_room.upper()}\n")
+  print(f"// {main_player.current_room}\n")
+  print(textwrap.fill(main_player.current_room.description, 70), '\n')
 
   while True:
     user_input = input('$ ')
 
     if user_input == 'n':
-      # If the user enters a cardinal direction, attempt to move to the room there.
       main_player.current_room = room[main_player.current_room].n_to
     elif user_input == 's':
       main_player.current_room = room[main_player.current_room].s_to
