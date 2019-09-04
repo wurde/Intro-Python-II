@@ -77,4 +77,9 @@ def adventure():
 #
 
 if __name__ == '__main__':
-  adventure()
+  try:
+    adventure()
+  except KeyboardInterrupt:
+    print('\n\n*Death by exhaustion*\n')
+    print('// GAME OVER\n')
+    sys.exit(0)
