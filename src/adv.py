@@ -2,6 +2,7 @@
 # Dependencies
 #
 
+import sys
 import textwrap
 from room import Room
 from player import Player
@@ -53,19 +54,17 @@ main_player = Player('Joe', 'overlook')
 #
 
 while True:
-    print(f"Current Location: {main_player.current_room.upper()}\n")
+    print('You wake up.\n')
+    print(f"// {main_player.current_room.upper()}\n")
 
     print(textwrap.fill(room[main_player.current_room].description, 70), '\n')
 
-    direction = input("Where would you like to go? (n|s|e|w)")
+    user_input = input()
 
-# Write a loop that:
-#
-# * Prints the current room name
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
-#
+    if user_input == 'q' or user_input == 'quit':
+      print('*Death by exhaustion*\n')
+      print('// GAME OVER\n')
+      sys.exit(0)
+
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
-#
-# If the user enters "q", quit the game.
