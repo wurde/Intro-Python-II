@@ -1,6 +1,13 @@
-from room import Room
+#
+# Dependencies
+#
 
-# Declare all the rooms
+from room import Room
+from player import Player
+
+#
+# Constants
+#
 
 room = {
     'outside':  Room("Outside Cave Entrance",
@@ -21,8 +28,9 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
-
+#
 # Link rooms together
+#
 
 room['outside'].n_to = room['foyer']
 room['foyer'].s_to = room['outside']
@@ -34,10 +42,14 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 #
-# Main
+# Initialize player
 #
 
-# Make a new player object that is currently in the 'outside' room.
+main_player = Player('Joe', 'outside')
+
+#
+# Main loop
+#
 
 # Write a loop that:
 #
