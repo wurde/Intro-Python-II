@@ -61,10 +61,10 @@ def adventure():
       main_player.move('n')
     elif user_input == 's':
       main_player.move('s')
-    elif user_input == 'w':
-      main_player.move('w')
     elif user_input == 'e':
       main_player.move('e')
+    elif user_input == 'w':
+      main_player.move('w')
     elif user_input == 'q' or user_input == 'quit':
       print('\n*Death by exhaustion*\n')
       print('// GAME OVER\n')
