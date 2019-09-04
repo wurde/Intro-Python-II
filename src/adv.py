@@ -51,6 +51,13 @@ main_player = Player('Joe', 'outside')
 # Main loop
 #
 
+while True:
+    print(f"Current Location: {main_player.current_room.upper()}\n")
+
+    print(f"*{room[main_player.current_room].description}*\n")
+
+    direction = input("Where would you like to go? (n|s|e|w)")
+
 # Write a loop that:
 #
 # * Prints the current room name
