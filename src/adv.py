@@ -2,6 +2,7 @@
 # Dependencies
 #
 
+import textwrap
 from room import Room
 from player import Player
 
@@ -45,7 +46,7 @@ room['treasure'].s_to = room['narrow']
 # Initialize player
 #
 
-main_player = Player('Joe', 'outside')
+main_player = Player('Joe', 'overlook')
 
 #
 # Main loop
@@ -54,7 +55,7 @@ main_player = Player('Joe', 'outside')
 while True:
     print(f"Current Location: {main_player.current_room.upper()}\n")
 
-    print(f"*{room[main_player.current_room].description}*\n")
+    print(textwrap.fill(room[main_player.current_room].description, 70), '\n')
 
     direction = input("Where would you like to go? (n|s|e|w)")
 
