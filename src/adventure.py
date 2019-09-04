@@ -50,16 +50,15 @@ room['treasure'].s_to = room['narrow']
 def adventure():
   main_player = Player('Joe', 'overlook')
 
+  print('You wake up.\n')
+  print(f"// {main_player.current_room.upper()}\n")
+  print(textwrap.fill(room[main_player.current_room].description, 70), '\n')
+
   while True:
-    print('You wake up.\n')
-    print(f"// {main_player.current_room.upper()}\n")
-
-    print(textwrap.fill(room[main_player.current_room].description, 70), '\n')
-
-    user_input = input()
+    user_input = input('$ ')
 
     if user_input == 'q' or user_input == 'quit':
-      print('*Death by exhaustion*\n')
+      print('\n*Death by exhaustion*\n')
       print('// GAME OVER\n')
       sys.exit(0)
 
