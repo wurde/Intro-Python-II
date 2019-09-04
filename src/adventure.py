@@ -57,13 +57,21 @@ def adventure():
   while True:
     user_input = input('$ ')
 
-    if user_input == 'q' or user_input == 'quit':
+    if user_input == 'n':
+      # If the user enters a cardinal direction, attempt to move to the room there.
+      main_player.current_room = room[main_player.current_room].n_to
+    elif user_input == 's':
+      main_player.current_room = room[main_player.current_room].s_to
+    elif user_input == 'w':
+      main_player.current_room = room[main_player.current_room].w_to
+    elif user_input == 'e':
+      main_player.current_room = room[main_player.current_room].e_to
+    elif user_input == 'q' or user_input == 'quit':
       print('\n*Death by exhaustion*\n')
       print('// GAME OVER\n')
       sys.exit(0)
-
-    # If the user enters a cardinal direction, attempt to move to the room there.
-    # Print an error message if the movement isn't allowed.
+    else:
+      print('\n*You stare up in confusion*\n')
 
 #
 # Initialize game
