@@ -46,21 +46,31 @@ room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
 #
+# Define commands
+#
+
+def print_commands():
+  print(style.white.bold('Navigation: n, s, e, w'))
+  print(style.white.bold('Items: take ITEM, drop ITEM, inventory'))
+  print(style.white.bold('Exit: q, quit\n'))
+
+#
 # Define game
 #
 
 def adventure():
   figlet = Figlet(font='slant')
-  print(figlet.renderText('ADVENTURE'))
+  print(style.white.bold(figlet.renderText('ADVENTURE')))
 
   # TODO initialize Map class
   # TODO initialize Player (pass in map instance)
   main_player = Player('Joe', room['outside'])
-  print('You wake up.\n')
-  print(f"// {str(main_player.current_room).upper()}\n")
-  print(textwrap.fill(main_player.current_room.description, 70), '\n')
+  print(style.white.bold('*You wake up*\n'))
 
-  # TODO print_commands()
+  print_commands()
+
+  # print(f"// {str(main_player.current_room).upper()}\n")
+  # print(textwrap.fill(main_player.current_room.description, 70), '\n')
 
   while True:
     user_input = input('$ ')
