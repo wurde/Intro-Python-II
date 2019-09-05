@@ -3,6 +3,7 @@
 #
 
 from room import Room
+from item import Item
 
 #
 # Define class

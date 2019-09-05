@@ -9,8 +9,8 @@ class Room:
   w_to = None
 
   def __init__(self, **kwargs):
-    self.name = name
-    self.description = description
+    self.name = kwargs.name
+    self.description = kwargs.description
 
   def __str__(self):
     return self.name
