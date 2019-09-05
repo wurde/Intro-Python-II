@@ -4,6 +4,8 @@
 
 import sys
 import textwrap
+import style
+from pyfiglet import Figlet
 from room import Room
 from player import Player
 
@@ -48,11 +50,17 @@ room['treasure'].s_to = room['narrow']
 #
 
 def adventure():
-  main_player = Player('Joe', room['outside'])
+  figlet = Figlet(font='slant')
+  print(figlet.renderText('ADVENTURE'))
 
+  # TODO initialize Map class
+  # TODO initialize Player (pass in map instance)
+  main_player = Player('Joe', room['outside'])
   print('You wake up.\n')
   print(f"// {str(main_player.current_room).upper()}\n")
   print(textwrap.fill(main_player.current_room.description, 70), '\n')
+
+  # TODO print_commands()
 
   while True:
     user_input = input('$ ')
