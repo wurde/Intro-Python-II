@@ -64,7 +64,10 @@ def adventure():
   figlet = Figlet(font='slant')
   print(style.white.bold(figlet.renderText('ADVENTURE')))
 
+  # TODO fill out all data
   grid = Grid()
+  print(grid.rooms[0])
+  sys.exit(0)
 
   # TODO initialize Player (pass in map instance)
   main_player = Player('Joe', room['outside'])
