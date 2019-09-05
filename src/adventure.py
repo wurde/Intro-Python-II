@@ -28,7 +28,6 @@ def adventure():
   figlet = Figlet(font='slant')
   print(style.white.bold(figlet.renderText('ADVENTURE')))
 
-  # TODO fill out all data
   grid = Grid()
   print(grid.rooms[0])
   sys.exit(0)
@@ -38,13 +37,12 @@ def adventure():
 
   print_commands()
 
-  # print(f"// {str(main_player.current_room).upper()}\n")
-  # print(textwrap.fill(main_player.current_room.description, 70), '\n')
-
   while True:
-    # TODO check for win condition
-    objective_a = False #grid.room('Watchtower of Ending').has_item('Red Parchment')
-    objective_b = False #grid.room('Crimson Sanctum').has_item('Blue Parchment')
+    objective_a = grid.room('Watchtower of Ending').has_item('Red Parchment')
+    objective_b = grid.room('Crimson Sanctum').has_item('Blue Parchment')
+    print(f"objective_a ${objective_a}")
+    print(f"objective_b ${objective_b}")
+    sys.exit(0)
 
     if objective_a and objective_b:
       print('')

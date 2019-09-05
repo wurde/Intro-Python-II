@@ -31,6 +31,7 @@ class Player:
     return "Main player"
 
   def move(self, direction):
+    # TODO rework to use new Grid system
     if direction == 'n' and self.current_room.n_to:
       print(f"\nYou move {directions[direction]}.\n")
       print(f"// {str(self.current_room.n_to).upper()}\n")
