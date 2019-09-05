@@ -90,7 +90,6 @@ def adventure():
 
     # TODO take item
     # TODO drop item
-    # TODO print inventory
     if main_player.health <= 0 or user_input in ['q', 'quit']:
       print(style.red.bold('\n*Death by exhaustion*\n'))
       print(style.white.bold('// GAME OVER\n'))
@@ -119,6 +118,6 @@ if __name__ == '__main__':
   try:
     adventure()
   except KeyboardInterrupt:
-    print('\n\n*Death by exhaustion*\n')
-    print('// GAME OVER\n')
+    print(style.red.bold('\n*Death by exhaustion*\n'))
+    print(style.white.bold('// GAME OVER\n'))
     sys.exit(0)
