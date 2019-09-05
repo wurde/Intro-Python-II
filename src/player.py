@@ -21,14 +21,14 @@ directions = {
 #
 
 class Player:
-  def __init__(self, name, current_room):
-    self.name = name
+  def __init__(self, grid, current_room):
+    self.grid = grid
     self.current_room = current_room
     self.health = 100
     self.items = []
 
   def __str__(self):
-    return self.name
+    return "Main player"
 
   def move(self, direction):
     if direction == 'n' and self.current_room.n_to:
