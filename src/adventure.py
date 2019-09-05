@@ -64,7 +64,6 @@ def adventure():
   print(style.white.bold(figlet.renderText('ADVENTURE')))
 
   grid = Grid()
-  sys.exit(0)
 
   # TODO initialize Player (pass in map instance)
   main_player = Player('Joe', room['outside'])
@@ -78,7 +77,15 @@ def adventure():
   while True:
     user_input = input('$ ')
 
-    if user_input == 'n':
+    # TODO add help handler
+    # TODO take item
+    # TODO drop item
+    # TODO print inventory
+    if main_player.health <= 0 or user_input in ['q', 'quit']:
+      print(style.red.bold('\n*Death by exhaustion*\n'))
+      print(style.white.bold('// GAME OVER\n'))
+      sys.exit(0)
+    elif user_input == 'n':
       main_player.move('n')
     elif user_input == 's':
       main_player.move('s')
@@ -86,10 +93,6 @@ def adventure():
       main_player.move('e')
     elif user_input == 'w':
       main_player.move('w')
-    elif user_input == 'q' or user_input == 'quit':
-      print('\n*Death by exhaustion*\n')
-      print('// GAME OVER\n')
-      sys.exit(0)
     else:
       print('\n*You stare up in confusion*\n')
 
