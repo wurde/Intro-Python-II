@@ -85,6 +85,10 @@ def adventure():
       print(style.red.bold('\n*Death by exhaustion*\n'))
       print(style.white.bold('// GAME OVER\n'))
       sys.exit(0)
+    elif user_input in ['h', 'help']:
+      main_player.health -= 5
+      print('')
+      print_commands()
     elif user_input == 'n':
       main_player.move('n')
     elif user_input == 's':
