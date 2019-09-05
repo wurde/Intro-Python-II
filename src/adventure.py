@@ -6,6 +6,7 @@ import sys
 import textwrap
 import style
 from pyfiglet import Figlet
+from grid import Grid
 from room import Room
 from player import Player
 
@@ -62,7 +63,9 @@ def adventure():
   figlet = Figlet(font='slant')
   print(style.white.bold(figlet.renderText('ADVENTURE')))
 
-  # TODO initialize Map class
+  grid = Grid()
+  sys.exit(0)
+
   # TODO initialize Player (pass in map instance)
   main_player = Player('Joe', room['outside'])
   print(style.white.bold('*You wake up*\n'))
