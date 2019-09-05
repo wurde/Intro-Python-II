@@ -75,6 +75,16 @@ def adventure():
   # print(textwrap.fill(main_player.current_room.description, 70), '\n')
 
   while True:
+    # TODO check for win condition
+    objective_a = False #grid.room('Watchtower of Ending').has_item('Red Parchment')
+    objective_b = False #grid.room('Crimson Sanctum').has_item('Blue Parchment')
+
+    if objective_a and objective_b:
+      print('')
+      print(style.green.bold(figlet.renderText('SUCCESS')))
+      print('')
+      sys.exit(0)
+
     user_input = input('$ ')
 
     # TODO add help handler
