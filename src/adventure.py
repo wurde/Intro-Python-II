@@ -2,6 +2,7 @@
 # Dependencies
 #
 
+import re
 import sys
 import textwrap
 import style
@@ -98,16 +99,17 @@ def adventure():
       main_player.health -= 5
       print('')
       print_commands()
-    elif user_input == 'n':
-      main_player.move('n')
-    elif user_input == 's':
-      main_player.move('s')
-    elif user_input == 'e':
-      main_player.move('e')
-    elif user_input == 'w':
-      main_player.move('w')
+    elif user_input == ['n', 's', 'e', 'w']:
+      main_player.move(user_input)
+    elif re.match("^take", user_input):
+      main_player.take(user_input)
+    elif re.match("^drop", user_input):
+      main_player.drop(user_input)
+    elif user_input in ['i', 'inventory']:
+      main_player.inventory()
     else:
-      print('\n*You stare up in confusion*\n')
+      main_player.health -= 5
+      print(style.yellow.bold("\n*You stare up in confusion*\n"))
 
 #
 # Initialize game

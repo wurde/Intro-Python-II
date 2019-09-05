@@ -61,3 +61,8 @@ class Player:
       return style.yellow.bold('(ಠ_ಠ) ')
     else:
       return style.green.bold('(ʘ‿ʘ)  ')
+
+  def inventory(self):
+    items = [item.name for item in self.items]
+    items_str = ", ".join(items)
+    print(style.white.bold(f"\nInventory: {items_str}\n"))
