@@ -85,9 +85,8 @@ def adventure():
       print('')
       sys.exit(0)
 
-    user_input = input('$ ')
+    user_input = input(main_player.status())
 
-    # TODO add help handler
     # TODO take item
     # TODO drop item
     # TODO print inventory

@@ -3,6 +3,7 @@
 #
 
 import textwrap
+import style
 
 #
 # Constants
@@ -52,3 +53,11 @@ class Player:
       self.current_room = self.current_room.w_to
     else:
       print(f"\n*You try to move {directions[direction]}, but the way is blocked*.\n")
+
+  def status(self):
+    if self.health < 20:
+      return style.red.bold('(╯°□°）╯︵ ┻━┻ ')
+    elif self.health < 50:
+      return style.yellow.bold('(ಠ_ಠ) ')
+    else:
+      return style.green.bold('(ʘ‿ʘ)  ')
