@@ -63,6 +63,26 @@ class Player:
       self.health -= 5
       print(style.yellow.bold('*You stare up in confusion*\n'))
 
+  def drop(self, action):
+    item_name = action.replace('drop ', '')
+
+    dropItem = None
+    for item in self.items:
+      if item.name.lower().strip() == item_name.lower().strip():
+        dropItem = item
+
+    if dropItem:
+      print(style.white.bold(f"Drop: {dropItem.name}\n"))
+      self.current_room.drop(dropItem)
+      new_items = [item for item in self.items if item.name.lower().strip() != dropItem.name.lower().strip()]
+      print('new_items', new_items)
+      self.items = new_items
+      # sys.exit(0)
+      # self.items = [item for item in self.items if item.name.lower().strip() != dropItem.name.lower().strip()]
+    else:
+      self.health -= 5
+      print(style.yellow.bold('*You stare up in confusion*\n'))
+
   def status(self):
     if self.health < 20:
       return style.red.bold('(╯°□°）╯︵ ┻━┻ ')
