@@ -37,7 +37,7 @@ class Player:
 
     if next_room_name:
       next_room = self.grid.room(next_room_name)
-      print(style.green.bold(f"*Move {directions[direction].upper()}*\n"))
+      print(style.green.bold(f"\n*Move {directions[direction].upper()}*\n"))
       print(f"// {next_room_name.upper()}\n")
       print(textwrap.fill(style.white.bold(next_room.description), 70), '\n')
       print(style.white.bold(f"Items: {', '.join([item.name for item in next_room.items])}\n"))
@@ -57,11 +57,11 @@ class Player:
         self.health += item.health
 
       self.items.append(item)
-      print(style.white.bold(f"Take: {item.name}\n"))
+      print(style.white.bold(f"\nTake: {item.name}\n"))
       print(style.white.bold(f"{item.description}\n"))
     else:
       self.health -= 5
-      print(style.yellow.bold('*You stare up in confusion*\n'))
+      print(style.yellow.bold('\n*You stare up in confusion*\n'))
 
   def drop(self, action):
     item_name = action.replace('drop ', '')
@@ -72,16 +72,13 @@ class Player:
         dropItem = item
 
     if dropItem:
-      print(style.white.bold(f"Drop: {dropItem.name}\n"))
+      print(style.white.bold(f"\nDrop: {dropItem.name}\n"))
       self.current_room.drop(dropItem)
       new_items = [item for item in self.items if item.name.lower().strip() != dropItem.name.lower().strip()]
-      print('new_items', new_items)
       self.items = new_items
-      # sys.exit(0)
-      # self.items = [item for item in self.items if item.name.lower().strip() != dropItem.name.lower().strip()]
     else:
       self.health -= 5
-      print(style.yellow.bold('*You stare up in confusion*\n'))
+      print(style.yellow.bold('\n*You stare up in confusion*\n'))
 
   def status(self):
     if self.health < 20:

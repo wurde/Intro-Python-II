@@ -51,4 +51,4 @@ class Room:
     return fetchItem
 
   def drop(self, item):
-    self.items = self.items.append(item)
+    self.items.append(item)
