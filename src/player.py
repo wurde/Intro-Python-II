@@ -2,6 +2,8 @@
 # Dependencies
 #
 
+import sys
+import random
 import textwrap
 import style
 
@@ -10,10 +12,10 @@ import style
 #
 
 directions = {
-  'n': 'NORTH',
-  's': 'SOUTH',
-  'e': 'EAST',
-  'w': 'WEST',
+  'n': 'north',
+  's': 'south',
+  'e': 'east',
+  'w': 'west',
 }
 
 #
@@ -31,29 +33,35 @@ class Player:
     return "Main player"
 
   def move(self, direction):
-    # TODO rework to use new Grid system
-    if direction == 'n' and self.current_room.n_to:
-      print(f"\nYou move {directions[direction]}.\n")
-      print(f"// {str(self.current_room.n_to).upper()}\n")
-      print(textwrap.fill(self.current_room.n_to.description, 70), '\n')
-      self.current_room = self.current_room.n_to
-    elif direction == 's' and self.current_room.s_to:
-      print(f"\nYou move {directions[direction]}.\n")
-      print(f"// {str(self.current_room.s_to).upper()}\n")
-      print(textwrap.fill(self.current_room.s_to.description, 70), '\n')
-      self.current_room = self.current_room.s_to
-    elif direction == 'e' and self.current_room.e_to:
-      print(f"\nYou move {directions[direction]}.\n")
-      print(f"// {str(self.current_room.e_to).upper()}\n")
-      print(textwrap.fill(self.current_room.e_to.description, 70), '\n')
-      self.current_room = self.current_room.e_to
-    elif direction == 'w' and self.current_room.w_to:
-      print(f"\nYou move {directions[direction]}.\n")
-      print(f"// {str(self.current_room.w_to).upper()}\n")
-      print(textwrap.fill(self.current_room.w_to.description, 70), '\n')
-      self.current_room = self.current_room.w_to
+    next_room_name = getattr(self.current_room, directions[direction])
+
+    if next_room_name:
+      next_room = self.grid.room(next_room_name)
+      print(style.green.bold(f"*Move {directions[direction].upper()}*\n"))
+      print(f"// {next_room_name.upper()}\n")
+      print(textwrap.fill(style.white.bold(next_room.description), 70), '\n')
+      print(style.white.bold(f"Items: {', '.join([item.name for item in next_room.items])}\n"))
+      self.current_room = next_room
     else:
-      print(f"\n*You try to move {directions[direction]}, but the way is blocked*.\n")
+      print(style.yellow.bold(f"\n*You try to move {directions[direction].upper()}, but the way is blocked*.\n"))
+
+    self.health -= 5
+
+  def take(self, action):
+    item_name = action.replace('take ', '')
+
+    if self.current_room.has_item(item_name):
+      item = self.current_room.take(item_name)
+
+      if (random.randint(1, 100) < item.rng):
+        self.health += item.health
+
+      self.items.append(item)
+      print(style.white.bold(f"Take: {item.name}\n"))
+      print(style.white.bold(f"{item.description}\n"))
+    else:
+      self.health -= 5
+      print(style.yellow.bold('*You stare up in confusion*\n'))
 
   def status(self):
     if self.health < 20:

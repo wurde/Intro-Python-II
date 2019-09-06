@@ -55,7 +55,7 @@ def adventure():
       main_player.health -= 5
       print('')
       print_commands()
-    elif user_input == ['n', 's', 'e', 'w']:
+    elif user_input in ['n', 's', 'e', 'w']:
       main_player.move(user_input)
     elif re.match("^take", user_input):
       main_player.take(user_input)

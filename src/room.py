@@ -38,3 +38,17 @@ class Room:
       return True
     else:
       return False
+
+  def take(self, name):
+    fetchItem = None
+
+    for item in self.items:
+      if item.name.lower().strip() == name.lower().strip():
+        fetchItem = item
+
+    self.items = [item for item in self.items if item.name.lower().strip() != name.lower().strip()]
+
+    return fetchItem
+
+  def drop(self, item):
+    self.items = self.items.append(item)
