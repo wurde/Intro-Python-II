@@ -11,13 +11,22 @@ class Room:
     if 'north' in kwargs:
       self.north = kwargs['north']
     else:
+      self.north = None
 
     if 'south' in kwargs:
       self.south = kwargs['south']
+    else:
+      self.south = None
 
     if 'east' in kwargs:
-    self.east = kwargs['east']
-    self.west = kwargs['west']
+      self.east = kwargs['east']
+    else:
+      self.east = None
+
+    if 'west' in kwargs:
+      self.west = kwargs['west']
+    else:
+      self.west = None
 
   def __str__(self):
     return self.name

@@ -29,8 +29,6 @@ def adventure():
   print(style.white.bold(figlet.renderText('ADVENTURE')))
 
   grid = Grid()
-  print(grid.rooms[0])
-  sys.exit(0)
 
   main_player = Player(grid, grid.room('Outside'))
   print(style.white.bold('*You wake up*\n'))
@@ -40,9 +38,6 @@ def adventure():
   while True:
     objective_a = grid.room('Watchtower of Ending').has_item('Red Parchment')
     objective_b = grid.room('Crimson Sanctum').has_item('Blue Parchment')
-    print(f"objective_a ${objective_a}")
-    print(f"objective_b ${objective_b}")
-    sys.exit(0)
 
     if objective_a and objective_b:
       print('')
@@ -52,8 +47,6 @@ def adventure():
 
     user_input = input(main_player.status())
 
-    # TODO take item
-    # TODO drop item
     if main_player.health <= 0 or user_input in ['q', 'quit']:
       print(style.red.bold('\n*Death by exhaustion*\n'))
       print(style.white.bold('// GAME OVER\n'))
